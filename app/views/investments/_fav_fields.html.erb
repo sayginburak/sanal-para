@@ -1,0 +1,11 @@
+<fieldset>
+  <%= f.label "Proje" %>
+  <%= f.select :project_id, options_from_collection_for_select(@projects, 'code', 'name'), class:"simple-example input-medium", include_blank:true %>
+
+  <%= f.label "Para" %>
+  <%= f.text_field :money %>
+
+  <%= f.hidden_field :_destroy %>
+  <%= link_to "Kaldır", '#', class: "remove_fields" %>
+  
+</fieldset>

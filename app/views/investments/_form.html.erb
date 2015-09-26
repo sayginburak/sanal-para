@@ -1,0 +1,33 @@
+<%= form_for @investment do |f| %>
+<div class="form-group">
+<% if @investment.errors.any? %>
+  <div class="error_messages">
+    <h2><%= pluralize(@investment.errors.count, "error") %> prohibited this investment from being saved:</h2>
+    <ul>
+    <% @investment.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+  <div class="field">
+    <%= label_tag "Email" %>
+    <%= text_field_tag :email %><br>
+  </div><br>
+
+  <div class="field">
+    <%= label_tag "Pin" %>
+    <%= text_field_tag :pin %><br>
+  </div><br>
+  
+  <%= f.fields_for :favs do |builder| %>
+    <%= render 'fav_fields', f: builder %>
+  <% end %>
+  <%= link_to_add_fields "Yeni Yatırım", f, :favs %><br>
+
+  <div class="actions">
+    <%= f.submit "Yatırım Yap" %>
+  </div>
+</div>
+<% end %>
